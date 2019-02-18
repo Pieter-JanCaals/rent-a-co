@@ -2,4 +2,4 @@ Rent a Co
 
 WebApp to rent a pet Co Star
 
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Created by Fred, Jérome, Rachelle and Pieter-Jan during the amazing coding bootcamp of LeWagon!
