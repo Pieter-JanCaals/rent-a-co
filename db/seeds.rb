@@ -1,3 +1,7 @@
+Booking.destroy_all
+Animal.destroy_all
+User.destroy_all
+
 ANIMAL_TYPES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Snake"]
 
 15.times do
@@ -5,6 +9,8 @@ ANIMAL_TYPES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Snake
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "TeamAwesome!!!",
     owner: owner
   )
 end
@@ -13,7 +19,7 @@ end
   users = User.where(owner: true)
   Animal.create!(
     name: Faker::FunnyName.name,
-    type: ANIMAL_TYPES[rand(0...ANIMAL_TYPES.size)],
+    species: ANIMAL_TYPES[rand(0...ANIMAL_TYPES.size)],
     description: Faker::Hipster.paragraph,
     user: users[rand(0...users.size)],
     price: Faker::Number.decimal(2),

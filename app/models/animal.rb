@@ -4,6 +4,6 @@ class Animal < ApplicationRecord
   has_many :bookings, dependent: :destroy
 
   validates :name, presence: true
-  validates :type, presence: true
+  validates :species, presence: true
   validates :price, presence: true
 end
