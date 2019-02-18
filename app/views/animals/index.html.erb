@@ -6,12 +6,12 @@
   <div>
     <% @animals.each do |animal| %>
       <div class="card" style="width: 18rem;">
-        <%= animal.photo, class: 'card-img-top'%>
+
           <div class="card-body">
             <h5 class="card-title"><%= animal.name %></h5>
             <h6 class="card-text"><strong><%= animal.species %></strong></h6>
             <p class="card-text"><%= animal.description %></p>
-            <%= link_to 'Book Now', show_path(animal[:id]), class: 'btn btn-primary'%>
+            <%= link_to 'Book Now', animal_path(animal[:id]), class: 'btn btn-primary'%>
           </div>
       </div>
     <%end%>

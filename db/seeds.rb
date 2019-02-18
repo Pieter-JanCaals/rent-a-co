@@ -43,7 +43,7 @@ end
   animals = Animal.all
   Booking.create!(
     user: users[rand(0...users.size)],
-    animal: animals[rand(0...ANIMAL_TYPES.size)],
+    animal: animals[rand(0...animals.size)],
     start_date: DateTime.now,
     end_date: DateTime.now + (rand * 10).floor,
     content: Faker::Hipster.paragraph
