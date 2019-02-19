@@ -28,7 +28,7 @@ class AnimalsController < ApplicationController
     if @animal.save
       redirect_to animal_path(@animal)
     else
-      render :new
+      render :edit
     end
   end
 
