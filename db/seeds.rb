@@ -33,7 +33,7 @@ end
     description: Faker::Hipster.paragraph,
     user: users[rand(0...users.size)],
     price: Faker::Number.decimal(2),
-    photo: "http://loremflickr.com/200/300/animals"
+    photo: "http://loremflickr.com/animals"
   )
 end
 

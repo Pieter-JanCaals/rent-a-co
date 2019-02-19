@@ -4,7 +4,52 @@
 2 -each card should contain a button that redirects to a animals/:id  -->
 <%= render "shared/navbar"%>
 
-<div class="main-container">
+
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Animals</h1>
+    </div>
+
+
+    <div class="col-12">
+      <p>We have <%= @animals.count %> animals on our website.</p>
+    </div>
+
+    </div>
+
+
+  <div class="row">
+
+    <% @animals.each do |animal| %>
+    <div class="col-xs-4">
+        <div class="animal-card">
+          <div class="animal-card-image"><%= image_tag(animal.photo, :alt => "animal photo") %></div>
+          <div class="animal-card-content">
+            <div class="animal-card-title">
+              <h4><%= animal.name %></h4>
+            </div>
+            <p><%= animal.species %></p>
+            <div class="flex">
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">$ <%= animal.price %> </i>
+              </div>
+            </div>
+          </div>
+          <div class="animal-card-actions">
+            <%= link_to 'Book Now', animal_path(animal[:id]), class: 'btn btn-primary'%>
+            <%= link_to 'More info', animal_path(animal) %>
+            <a href="#" class="ml-3 text-warning">Edit</a>
+            <a href="#" class="ml-3 text-danger">Remove</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <div class="main-container">
   <div>
     <% @animals.each do |animal| %>
       <div class="card" style="width: 18rem;">
@@ -21,3 +66,4 @@
     <%end%>
   </div>
 </div>
+ -->
