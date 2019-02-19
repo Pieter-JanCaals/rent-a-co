@@ -10,10 +10,9 @@
 
 
   <div class="row">
-
     <% @animals.each do |animal| %>
     <div class="col-xs-4">
-        <div class="animal-card card">
+        <div class="animal-card">
           <div class="animal-card-image"><%= image_tag(animal.photo, :alt => "animal photo") %></div>
           <div class="animal-card-content">
             <div class="animal-card-title">
