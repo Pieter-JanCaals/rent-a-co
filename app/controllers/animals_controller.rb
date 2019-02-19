@@ -5,7 +5,12 @@ class AnimalsController < ApplicationController
     @animals = Animal.all
   end
 
-  def show; end
+  def show
+    @booking = @animal.bookings.find_by(user: current_user)
+    # for testing purpuses
+    # @booking = @animal.bookings.find_by(user: User.find(30))
+    @booking ||= Booking.new
+  end
 
   def new
     @animal = Animal.new
