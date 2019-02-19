@@ -1,0 +1,49 @@
+.host-btn {
+  border: solid 2px $highlight;
+  padding: 3px;
+  border-radius: 6px;
+  color: $highlight;
+  font-size: 16px;
+}
+
+  .host-btn:hover {
+    padding: 3px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    background-color: $highlight;
+  }
+
+.add-btn{
+  padding: 3px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  border: solid 2px $main_txt;
+  background-color: $main_txt;
+}
+
+  .add-btn:hover{
+    padding: 3px;
+    border-radius: 6px;
+    color: $main_txt;
+    font-size: 16px;
+    background-color: #fff;
+  }
+
+.remove-btn{
+  padding: 3px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  border: solid 2px $accent;
+  background-color: $accent;
+}
+
+  .remove-btn:hover{
+    padding: 3px;
+    border-radius: 6px;
+    color: $accent;
+    font-size: 16px;
+    background-color: #fff;
+  }
