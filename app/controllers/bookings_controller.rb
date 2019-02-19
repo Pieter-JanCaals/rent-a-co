@@ -1,27 +1,33 @@
 class BookingsController < ApplicationController
-  before_action :set_animal, only: [:new, :create, :delete]
+  before_action :set_booking, only: [:update, :destroy]
+  before_action :set_animal, only: [:create]
 
   def index
     @bookings = Booking.where("user_id = #{current_user}")
   end
 
-  def new
-    @booking = Booking.new
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
+    # for testing purpuses
+    # @booking.user = User.last
     @booking.user = current_user
     if @booking.save
-      redirect_to animal_path(@animal)
+      redirect_to bookings_path
     else
-      render animal_path(@animal)
+      render "animals/show"
+    end
+  end
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to root_path
+    else
+      render "animals/show"
     end
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
   end
@@ -29,7 +35,11 @@ class BookingsController < ApplicationController
   private
 
   def set_animal
-    @animal = Animal.find(params[:id])
+    @animal = Animal.find(params[:animal_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params
