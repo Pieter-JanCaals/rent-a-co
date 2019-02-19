@@ -9,6 +9,8 @@
 
           <div class="card-body">
             <h5 class="card-title"><%= animal.name %></h5>
+            <%= image_tag(animal.photo, :alt => "animal photo") %>
+            <img  <%= animal.photo %></h5>
             <h6 class="card-text"><strong><%= animal.species %></strong></h6>
             <p class="card-text"><%= animal.description %></p>
             <%= link_to 'Book Now', animal_path(animal[:id]), class: 'btn btn-primary'%>
