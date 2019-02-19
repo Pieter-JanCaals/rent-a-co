@@ -15,7 +15,7 @@
   }
 
 .add-btn{
-  padding: 3px;
+  padding: 5px;
   border-radius: 6px;
   color: #fff;
   font-size: 16px;
@@ -24,15 +24,16 @@
 }
 
   .add-btn:hover{
-    padding: 3px;
+    padding: 5px;
     border-radius: 6px;
     color: $main_txt;
     font-size: 16px;
     background-color: #fff;
+    text-decoration: none;
   }
 
 .remove-btn{
-  padding: 3px;
+  padding: 5px;
   border-radius: 6px;
   color: #fff;
   font-size: 16px;
@@ -41,9 +42,10 @@
 }
 
   .remove-btn:hover{
-    padding: 3px;
+    padding: 5px;
     border-radius: 6px;
     color: $accent;
     font-size: 16px;
     background-color: #fff;
+    text-decoration: none;
   }

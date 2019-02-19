@@ -1,30 +1,21 @@
-<!-- what we need to do on this page
-
-1 -list all animals in <div class="card"></div>div> (code located in assets/stylesheets/_card.scss)
-2 -each card should contain a button that redirects to a animals/:id  -->
 <%= render "shared/navbar"%>
-
-
 
 <div class="container mt-3">
   <div class="row">
     <div class="col-12">
-      <h1>All our Animals</h1>
+      <h1 class="page_header">All our Animals</h1>
     </div>
-
-
-    <div class="col-12">
-      <p>We have <%= @animals.count %> animals on our website.</p>
+    <div class="col-12 sub_txt">
+      <p>There are <strong><%= @animals.count %></strong> animals to choose from!</p>
     </div>
-
-    </div>
+  </div>
 
 
   <div class="row">
 
     <% @animals.each do |animal| %>
     <div class="col-xs-4">
-        <div class="animal-card">
+        <div class="animal-card card">
           <div class="animal-card-image"><%= image_tag(animal.photo, :alt => "animal photo") %></div>
           <div class="animal-card-content">
             <div class="animal-card-title">
