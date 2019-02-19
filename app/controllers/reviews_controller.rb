@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to animal_path(@animal)
     else
-      render "animals/show"
+      render "animals/#{params[:animal_id]}"
     end
   end
 
