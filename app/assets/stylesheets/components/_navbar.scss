@@ -1,77 +1,66 @@
-/* Main navbar */
-.navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+$main_txt:#4f9da6;
+$txt: #233142;
+$highlight:#facf5a;
+$accent:#ff5959;
+
+.navbar-lewagon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: white;
-  transition: all 0.3s ease;
-  height: 70px;
-  padding: 0px 30px;
+  padding: 16px 24px;
+  position:fixed;
+  top: 0 ;
+  width: 100%;
+}
+
+.navbar-lewagon .brand {
+  width: 40px;
+}
+
+.navbar-lewagon .navbar-lewagon-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
-/* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
+.navbar-lewagon .navbar-lewagon-actions .navbar-lewagon-link {
+  margin-left: 24px;
+  color: main_txt;
 }
-
-/* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
-
-/* Right section */
-.navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Basic navbar item */
-.navbar-wagon-item {
-  cursor: pointer;
-  padding: 0 20px;
-}
-
-/* Navbar link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
+.navbar-lewagon .navbar-lewagon-actions .navbar-lewagon-link:hover {
+  color: txt;
   text-decoration: none;
 }
 
-/* Dropdown menu */
-.navbar-wagon-dropdown-menu {
-  margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #E6E6E6;
+
+.navbar-lewagon .navbar-lewagon-actions .avatar {
+  margin-left: 24px;
 }
-.navbar-wagon-dropdown-menu li > a {
-  transition: color 0.3s ease;
-  font-weight: lighter !important;
-  color: #999999 !important;
-  font-size: 15px !important;
-  line-height: 22px !important;
-  padding: 10px 20px;
+
+.navbar-lewagon .dropdown-toggle {
+  cursor: pointer;
 }
-.navbar-wagon-dropdown-menu li > a:hover {
-  background: transparent !important;
-  color: black !important;
+
+.avatar-bordered {
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(79, 157, 166,0.5);
+  border: white 1px solid;
 }
-.navbar-wagon-dropdown-menu:before {
-  content: ' ';
-  height: 10px;
-  width: 10px;
-  position: absolute;
-  right: 10px;
-  top: -6px;
-  background-color: white;
-  transform: rotate(45deg);
-  border-left: 1px solid #E6E6E6;
-  border-top: 1px solid #E6E6E6;
+
+.host-btn {
+  border: solid 2px $highlight;
+  padding: 3px;
+  border-radius: 6px;
+  color: $highlight;
+  font-size: 16px;
+}
+
+.host-btn:hover {
+
+  padding: 3px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  background-color: $highlight;
 }
