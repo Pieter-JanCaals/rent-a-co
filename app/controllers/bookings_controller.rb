@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      redirect_to root_path
+      redirect_to bookings_path
     else
       render "animals/show"
     end
