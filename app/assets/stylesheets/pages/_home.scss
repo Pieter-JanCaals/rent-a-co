@@ -1,1 +1,51 @@
-// Specific CSS for your home-page
+// Specific CSS for your home-page spalsh screen
+// https://kilianvalkhof.com/2017/design/sloped-edges-with-consistent-angle-in-css/
+.wrapper{
+  overflow:hidden;
+  width: 100%;
+}
+
+.header{
+  //parallax scrolling
+  //background-color: #727272;
+  opacity: 0.7;
+  background-image: url("https://loremflickr.com/320/240"), linear-gradient(#383737, #A5A5A5);
+  height: 610px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow:hidden;
+  // slanting picture
+  width:120%;
+  top:-5%;
+  left:-5%;
+  transform:rotate(2deg);
+  // slanting
+  clip-path: polygon(
+    0 0, /* left top */
+    100% 0, /* right top */
+    100% 100%, /* right bottom */
+    0 90% /* left bottom */
+  );
+}
+
+  .header:after {
+    position:absolute;
+    content: " ";
+    display:block;
+    left:0;
+    bottom:-20px;
+    width:100%;
+    border-style: solid;
+    border-width: 0 100vw 20px 0;
+    border-color: transparent rgba(0,0,0,0.4) transparent transparent;
+}
+
+.header-info{
+  color:white;
+  padding-top: 150px;
+  // counter the slanting picture
+  margin-left:5%;
+  transform:rotate(-2deg);
+}
