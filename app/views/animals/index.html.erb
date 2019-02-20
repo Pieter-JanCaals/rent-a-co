@@ -1,9 +1,11 @@
 <div class="wrapper">
   <div class="header-wrap">
     <div class="header">
-      <div class="header-info">
-        <h1>Rent a Co</h1>
-        <p>Get your star today!</p>
+      <div class="header-inside">
+        <div class="header-info">
+          <h1>Rent a Co</h1>
+          <p>Get your star today!</p>
+        </div>
       </div>
     </div>
   </div>
@@ -20,30 +22,33 @@
 
 
     <div class="row">
-      <% @animals.each do |animal| %>
-      <div class="col-xs-4">
-          <div class="animal-card">
-            <div class="animal-card-image"><%= image_tag(animal.photo, :alt => "animal photo") %></div>
-            <div class="animal-card-content">
-              <div class="animal-card-title">
-                <h4><%= animal.name %></h4>
-              </div>
-              <p><%= animal.species %></p>
-              <div class="flex">
-                <div class="flex ml-3">
-                  <i class="material-icons mr-2">$ <%= animal.price %> </i>
+        <% @animals.each do |animal| %>
+          <div class="col-xs-4">
+            <div id="monster" class="hideme">
+              <div class="animal-card">
+                <div class="animal-card-image"><%= image_tag(animal.photo, :alt => "animal photo") %></div>
+                <div class="animal-card-content">
+                  <div class="animal-card-title">
+                    <h4><%= animal.name %></h4>
+                  </div>
+                  <p><%= animal.species %></p>
+                  <div class="flex">
+                    <div class="flex ml-3">
+                      <i class="material-icons mr-2">$ <%= animal.price %> </i>
+                    </div>
+                  </div>
+                </div>
+                <div class="animal-card-actions">
+                  <%= link_to 'Book Now', animal_path(animal[:id]), class: 'add-btn'%>
                 </div>
               </div>
+              </div>
             </div>
-            <div class="animal-card-actions">
-              <%= link_to 'Book Now', animal_path(animal[:id]), class: 'add-btn'%>
-            </div>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
     </div>
   </div>
 </div>
+
 
 <!-- <div class="main-container">
   <div>
