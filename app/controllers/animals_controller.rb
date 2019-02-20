@@ -3,7 +3,7 @@ class AnimalsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @animals = Animal.all
+    @animals = policy_scope(Animal)
   end
 
   def show
@@ -11,13 +11,16 @@ class AnimalsController < ApplicationController
     # for testing purpuses
     # @booking = @animal.bookings.find_by(user: User.find(30))
     @booking ||= Booking.new
+    authorize @animal
   end
 
   def new
     @animal = Animal.new
+    authorize @animal
   end
 
   def create
+    authorize @animal
     @animal = Animal.new(animal_params)
     @animal.user = current_user
     if @animal.save

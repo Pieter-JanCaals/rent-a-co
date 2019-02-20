@@ -8,7 +8,9 @@
     <% if user_signed_in? %>
       <%= link_to "Become an Owner", animals_path, class: "navbar-lewagon-link host-btn" %>
       <div class="badge-container">
+        <% if policy(Animal).create? %>
         <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
+        <% end %>
         <%= link_to "My Bookings", bookings_path, class: "navbar-lewagon-link" %>
       </div>
 
