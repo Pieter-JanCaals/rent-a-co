@@ -1,6 +1,6 @@
 <div class="navbar-lewagon">
   <a href=<%= animals_path %> >
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" class="brand">
+    <img src="rentaco.png" class="brand">
   </a>
 
   <!-- displayed on laptops -->
@@ -18,12 +18,11 @@
       </div>
 
       <div class="dropdown">
-        <img src='https://kitt.lewagon.com/placeholder/users/cveneziani' class="avatar-bordered avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+        <img src='mrfox.jpg' class="avatar-bordered avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
           <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-          <a class="dropdown-item" href= <% "#{}" %> ><i class="fas fa-sign-out-alt"></i> Log out</a>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
         </div>
       </div>
     <% else %>
