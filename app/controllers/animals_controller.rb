@@ -27,7 +27,9 @@ class AnimalsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+
+  end
 
   def update
     @animal.update(animal_params)
