@@ -7,7 +7,7 @@ class AnimalsController < ApplicationController
   end
 
   def show
-    @booking = @animal.bookings.find_by(user: current_user)
+    # @booking = @animal.bookings.find_by(user: current_user)
     # for testing purpuses
     # @booking = @animal.bookings.find_by(user: User.find(30))
     @booking ||= Booking.new
@@ -30,7 +30,9 @@ class AnimalsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+
+  end
 
   def update
     @animal.update(animal_params)
@@ -53,6 +55,6 @@ class AnimalsController < ApplicationController
   end
 
   def animal_params
-    params.require(:animal).permit(:name, :type, :description, :price, :photo)
+    params.require(:animal).permit(:name, :species, :description, :price, :photo)
   end
 end

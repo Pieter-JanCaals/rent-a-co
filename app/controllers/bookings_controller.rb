@@ -3,7 +3,10 @@ class BookingsController < ApplicationController
   before_action :set_animal, only: [:create]
 
   def index
-    @bookings = policy_scope(Booking).where("user_id = #{current_user}")
+    @bookings = policy_scope(Booking).where(user: current_user)
+    @pending = @bookings.where(confirmed: nil)
+    @confirmed = @bookings.where(confirmed: true)
+    @rejected = @bookings.where(confirmed: false)
   end
 
   def create
@@ -16,7 +19,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      render "animals/show"
+      render animal_path(@animal)
     end
   end
 
@@ -25,7 +28,7 @@ class BookingsController < ApplicationController
     if @booking.update(booking_params)
       redirect_to bookings_path
     else
-      render "animals/show"
+      render animal_path(@animal)
     end
   end
 
