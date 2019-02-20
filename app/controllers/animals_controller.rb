@@ -7,7 +7,7 @@ class AnimalsController < ApplicationController
   end
 
   def show
-    @booking = @animal.bookings.find_by(user: current_user)
+    # @booking = @animal.bookings.find_by(user: current_user)
     # for testing purpuses
     # @booking = @animal.bookings.find_by(user: User.find(30))
     @booking ||= Booking.new
