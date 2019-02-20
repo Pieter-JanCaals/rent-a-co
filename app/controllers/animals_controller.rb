@@ -20,8 +20,8 @@ class AnimalsController < ApplicationController
   end
 
   def create
-    authorize @animal
     @animal = Animal.new(animal_params)
+    authorize @animal
     @animal.user = current_user
     if @animal.save
       redirect_to animal_path(@animal)
@@ -31,10 +31,11 @@ class AnimalsController < ApplicationController
   end
 
   def edit
-
+    authorize @animal
   end
 
   def update
+    authorize @animal
     @animal.update(animal_params)
     if @animal.save
       redirect_to animal_path(@animal)
@@ -44,6 +45,7 @@ class AnimalsController < ApplicationController
   end
 
   def destroy
+    authorize @animal
     @animal.destroy
     redirect_to animals_path
   end

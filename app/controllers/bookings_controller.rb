@@ -10,8 +10,8 @@ class BookingsController < ApplicationController
   end
 
   def create
-    authorize @booking
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.animal = @animal
     # for testing purpuses
     # @booking.user = User.last
