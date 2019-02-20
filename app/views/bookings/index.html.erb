@@ -5,14 +5,10 @@
       @rejected = all rejected bookings for the current_user
 -->
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="#" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<h1>My Bookings</h1>
 
+
+<h1>My Bookings</h1>
+<div class="container">
 <!-- Checks if a user doesn't have any bookings -->
 <% if @bookings.size.zero? %>
   <h3>You don't have any bookings yet!</h3>
@@ -22,15 +18,28 @@
 <% if @pending.size.positive? %>
   <h3>Pending bookings:</h3>
   <% @pending.each do |booking| %>
+  <div class="row">
+    <div class="col-xs-4">
+    <p><%= cl_image_tag(booking.animal.photo, :alt => "animal photo") %></p>
+  </div>
+  <div class="animal-card-title">
+    <div class="col-xs-4">
     <span>Animal: <%= booking.animal.name %></span>
+  </div>
+  <div class="col-xs-4">
     <span>Start_date: <%= booking.start_date %></span>
     <span>End_Date: <%= booking.end_date %></span>
+  </div>
+  <div class="col-xs-4">
     <p>Content: <%= booking.content %></p>
+  </div>
+</div>
     <%= link_to "Edit", animal_path(booking.animal) %>
     <%= link_to "Cancel this booking", booking_path(booking),
         method: :delete,
         data: { confirm: "Are you sure you want to cancel this booking?" } %>
     <br>
+  </div>
   <% end %>
 <% end %>
 
@@ -57,4 +66,5 @@
     <br>
   <% end %>
 <% end %>
+</div>
 
