@@ -1,24 +1,32 @@
 <div class="navbar-lewagon">
-  <a href="#">
+  <a href=<%= animals_path %> >
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" class="brand">
   </a>
 
   <!-- displayed on laptops -->
   <div class="navbar-lewagon-actions d-none d-sm-flex">
-    <%= link_to "Become an Owner", animals_path, class: "navbar-lewagon-link host-btn" %>
-    <div class="badge-container">
-      <%= link_to "Animals", animals_path, class: "navbar-lewagon-link" %>
-      <%= link_to "Bookings", animals_path, class: "navbar-lewagon-link" %>
-    </div>
+    <% if user_signed_in? %>
+      <%= link_to "Become an Owner", animals_path, class: "navbar-lewagon-link host-btn" %>
+      <div class="badge-container">
+        <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
+        <%= link_to "Add Animal", new_animal_path, class: "navbar-lewagon-link" %>
+        <%= link_to "My Bookings", bookings_path, class: "navbar-lewagon-link" %>
+      </div>
 
-    <div class="dropdown">
-      <img src='https://kitt.lewagon.com/placeholder/users/cveneziani' class="avatar-bordered avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+      <div class="dropdown">
+        <img src='https://kitt.lewagon.com/placeholder/users/cveneziani' class="avatar-bordered avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
           <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <a class="dropdown-item" href= <% "#{}" %> ><i class="fas fa-sign-out-alt"></i> Log out</a>
         </div>
-     </div>
+      </div>
+    <% else %>
+      <%= link_to "Create an account", new_user_registration_path, class: "navbar-lewagon-link" %>
+      <%= link_to "Sign in", new_user_session_path, class: "navbar-lewagon-link" %>
+    <% end %>
+
   </div>
  <!--
 displayed on phone / tablet
