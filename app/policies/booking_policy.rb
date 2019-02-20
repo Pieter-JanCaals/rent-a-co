@@ -1,13 +1,14 @@
-class AnimalPolicy < ApplicationPolicy
-  def create?
-    user.owner
+class BookingPolicy < ApplicationPolicy
+
+  def index?
+    true
   end
 
   def show?
     true
   end
 
-  def index?
+  def create?
     true
   end
 

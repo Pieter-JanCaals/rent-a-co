@@ -3,10 +3,11 @@ class BookingsController < ApplicationController
   before_action :set_animal, only: [:create]
 
   def index
-    @bookings = Booking.where("user_id = #{current_user}")
+    @bookings = policy_scope(Booking).where("user_id = #{current_user}")
   end
 
   def create
+    authorize @booking
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
     # for testing purpuses
@@ -20,6 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    authorize @booking
     if @booking.update(booking_params)
       redirect_to bookings_path
     else
@@ -28,6 +30,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to bookings_path
   end

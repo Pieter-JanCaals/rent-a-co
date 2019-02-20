@@ -6,7 +6,9 @@
   <!-- displayed on laptops -->
   <div class="navbar-lewagon-actions d-none d-sm-flex">
     <% if user_signed_in? %>
-      <%= link_to "Become an Owner", animals_path, class: "navbar-lewagon-link host-btn" %>
+      <% unless current_user.owner %>
+        <%= link_to "Become an Owner", owner_path, class: "navbar-lewagon-link host-btn" %>
+      <% end %>
       <div class="badge-container">
         <% if policy(Animal).create? %>
         <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
