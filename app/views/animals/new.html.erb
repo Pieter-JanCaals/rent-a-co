@@ -10,30 +10,15 @@
         <div class="animal-form">
           <h1 class="page_header">Add a new Animal</h1>
           <div class="mt-3">
-            <%= form_for(@animal) do |f| %>
-              <div class="form-group">
-                <%= f.label :name %>
-                <%= f.text_field :name, class: 'form-control' %>
-              </div>
-              <div class="form-group">
-                <%= f.label :species %>
-                <%= f.text_field :species, class: 'form-control' %>
-              </div>
-               <div class="form-group">
-                <%= f.label :photo %>
-                <%= f.text_field :photo, class: 'form-control' %>
-              </div>
-              <div class="form-group">
-                <%= f.label :description %>
-                <%= f.text_area :description, class: 'form-control' %>
-              </div>
-              <div class="form-group">
-                <%= f.label :price %>
-                <%= f.number_field :price, class: 'form-control' %>
-              </div>
+            <%= simple_form_for(@animal) do |f| %>
+              <%= f.input :name, class: 'form-control' %>
+              <%= f.input :species, class: 'form-control' %>
+              <%= f.input :photo, class: 'form-control' %>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.input :description, class: 'form-control' %>
+              <%= f.input :price, class: 'form-control' %>
               <div class="mt-3">
                 <%= f.submit class: 'add-btn' %>
-                <%= link_to 'Cancel', animals_path, class: 'remove-btn' %>
               </div>
             <% end %>
           </div>
