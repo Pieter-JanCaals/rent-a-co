@@ -3,7 +3,10 @@ class BookingsController < ApplicationController
   before_action :set_animal, only: [:create]
 
   def index
-    @bookings = Booking.where("user_id = #{current_user}")
+    @bookings = Booking.where(user: current_user)
+    @pending = @bookings.where(confirmed: nil)
+    @confirmed = @bookings.where(confirmed: true)
+    @rejected = @bookings.where(confirmed: false)
   end
 
   def create
