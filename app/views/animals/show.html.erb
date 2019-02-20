@@ -5,13 +5,13 @@
 2- add div for containing Price/calendar (from...to...)/message/BOOK button that redirects to confirm booking page
  -->
 
- <div class="map" style="background-image: url('<%= @animal.photo %>')"></div>
+ <div class="map" style="background-image: url('<%= cl_image_path @animal.photo %>')"></div>
 
 <div class="container margin-top-negative">
   <div class="row">
     <div class="col-8">
       <div class="animal-show-card">
-        <%= image_tag(@animal.photo, :alt => "animal photo") %>
+        <%= cl_image_tag(@animal.photo, :alt => "animal photo") %>
         <h1><%= @animal.name %></h1>
       </div>
       <div class="animal-show-card">
