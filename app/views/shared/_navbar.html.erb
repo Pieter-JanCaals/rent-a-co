@@ -6,10 +6,14 @@
   <!-- displayed on laptops -->
   <div class="navbar-lewagon-actions d-none d-sm-flex">
     <% if user_signed_in? %>
-      <%= link_to "Become an Owner", animals_path, class: "navbar-lewagon-link host-btn" %>
+      <% unless current_user.owner %>
+        <%= link_to "Become an Owner", owner_path, class: "navbar-lewagon-link host-btn" %>
+      <% end %>
       <div class="badge-container">
-        <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
-        <%= link_to "Add Animal", new_animal_path, class: "navbar-lewagon-link" %>
+        <% if policy(Animal).create? %>
+          <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
+          <%= link_to "Add Animal", new_animal_path, class: "navbar-lewagon-link" %>
+        <% end %>
         <%= link_to "My Bookings", bookings_path, class: "navbar-lewagon-link" %>
       </div>
 

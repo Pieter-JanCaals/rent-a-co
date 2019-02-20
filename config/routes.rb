@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'reviews/create'
   devise_for :users
   root to: 'animals#index'
+  get 'users/owner', to: 'users#become_owner', as: 'owner'
   resources :animals do
     resources :bookings, only: [:create, :update]
     resources :reviews, only: [:create]
