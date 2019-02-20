@@ -26,7 +26,7 @@
         <%= simple_form_for [@animal, @booking] do |f| %>
           <%= f.input :start_date, :as => :date, :order => [:day, :month, :year] %>
           <%= f.input :end_date, :as => :date, :order => [:day, :month, :year] %>
-          <%= f.button :button, "Book", type: :submit, class: "add-btn" %>
+          <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
         <% end %>
 
 
@@ -53,14 +53,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<a class="trigger_popup_fricc">Click here to show the popup</a>
-
-<div class="hover_bkgr_fricc">
-    <span class="helper"></span>
-    <div>
-        <div class="popupCloseButton">X</div>
-        <p>Add any HTML content<br />inside the popup box!</p>
-    </div>
 </div>
