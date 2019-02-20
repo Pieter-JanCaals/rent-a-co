@@ -26,7 +26,7 @@
         <%= simple_form_for [@animal, @booking] do |f| %>
           <%= f.input :start_date, :as => :date, :order => [:day, :month, :year] %>
           <%= f.input :end_date, :as => :date, :order => [:day, :month, :year] %>
-          <%= f.button :button, "Book", type: :submit, class: "add-btn" %>
+          <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
         <% end %>
 
 
