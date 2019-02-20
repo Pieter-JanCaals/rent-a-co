@@ -1,6 +1,60 @@
+<!-- Available instance variables :
+      @bookings = all bookings for the current_user
+      @pending = all pending bookings for the current_user
+      @confirmed = all confirmed bookings for the current_user
+      @rejected = all rejected bookings for the current_user
+-->
+
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="#" alt="Card image cap">
   <div class="card-body">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
 </div>
+<h1>My Bookings</h1>
+
+<!-- Checks if a user doesn't have any bookings -->
+<% if @bookings.size == 0 %>
+  <h3>You don't have any bookings yet!</h3>
+<% end %>
+
+<!-- Display the pending bookings -->
+<% if @pending.size > 0 %>
+  <h3>Pending bookings:</h3>
+  <% @pending.each do |booking| %>
+    <span>Animal: <%= booking.animal.name %></span>
+    <span>Start_date: <%= booking.start_date %></span>
+    <span>End_Date: <%= booking.end_date %></span>
+    <p>Content: <%= booking.content %></p>
+    <%= link_to "Edit", animal_path(booking.animal) %>
+    <%= link_to "Cancel", booking_path(booking.id),
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete this booking?" } %>
+    <br>
+  <% end %>
+<% end %>
+
+<!-- Display the confirmed bookings -->
+<% if @confirmed.size > 0 %>
+  <h3>Confirmed bookings:</h3>
+  <% @confirmed.each do |booking| %>
+    <span>Animal: <%= booking.animal.name %></span>
+    <span>Start_date: <%= booking.start_date %></span>
+    <span>End_Date: <%= booking.end_date %></span>
+    <p>Content: <%= booking.content %></p>
+    <br>
+  <% end %>
+<% end %>
+
+<!-- Display the rejected bookings -->
+<% if @rejected.size > 0 %>
+  <h3>Rejected bookings:</h3>
+  <% @rejected.each do |booking| %>
+    <span>Animal: <%= booking.animal.name %></span>
+    <span>Start_date: <%= booking.start_date %></span>
+    <span>End_Date: <%= booking.end_date %></span>
+    <p>Content: <%= booking.content %></p>
+    <br>
+  <% end %>
+<% end %>
+
