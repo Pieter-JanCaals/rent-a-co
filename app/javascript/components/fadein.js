@@ -1,7 +1,4 @@
 const fadein = () => {
-  // $(function(){  // $(document).ready shorthand
-  //   $('.first_elements').animate({'opacity':'1'},1500);
-  // });
 
   const checkPositionCard = () => {
     $('.hideme').each( function(item){
