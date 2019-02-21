@@ -11,15 +11,15 @@ puts "Done!"
 # Some hard coded animal species where we will chose one from each time an animal
 # is created
 
-ANIMAL_SPECIES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Snake"]
+# ANIMAL_SPECIES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Snake"]
 
 
-# Create 15 random users
+# # Create 15 random users
 
 # 15.times do
 
-  # The new created user has a 40% chance to be an owner. All the others will
-  # just be normal clients
+#   # The new created user has a 40% chance to be an owner. All the others will
+#   # just be normal clients
 
 #   owner = rand > 0.6
 
@@ -32,7 +32,7 @@ ANIMAL_SPECIES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Sna
 #   )
 # end
 
-# Create 25 random animals
+# # Create 25 random animals
 
 # 25.times do
 #   users = User.where(owner: true)
@@ -46,7 +46,7 @@ ANIMAL_SPECIES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Sna
 #   )
 # end
 
-# Create 10 random bookings betweens existing users and animals
+# # Create 10 random bookings betweens existing users and animals
 
 # 10.times do
 #   users = User.where(owner: true)
