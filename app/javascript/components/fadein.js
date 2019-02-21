@@ -13,7 +13,9 @@ const fadein = () => {
           $('.hideme').each( function(i){
               var bottom_of_object = $(this).position().top + $(this).outerHeight();
               var bottom_of_window = $(window).scrollTop() + $(window).height();
-
+              console.log(`Bottom of object: ${bottom_of_object}, Bottom of window: ${bottom_of_window}`);
+              console.log($(this).offsetTop);
+              console.log($(window));
               /* If the object is completely visible in the window, fade it it */
               if( bottom_of_window > bottom_of_object ){
 
