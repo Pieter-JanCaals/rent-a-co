@@ -1,0 +1,38 @@
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+          </button>
+        <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLongTitle"><strong>Booking Confrimation</strong></h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                   <div class="row">
+                    <div class="col-md-4 ml-auto">
+                      <%= cl_image_tag(@animal.photo, :alt => "animal photo", width: 200) %>
+                    </div>
+                    <div class="col-md-6 ml-auto" style="margin-left:30px;" >
+                      <h2><%= @animal.name %></h2>
+                      <h3><%= @animal.species %></h3>
+                    </div>
+                  </div>
+                    <h5><h4><strong>About: </strong></h4> <%= @animal.description %></h5>
+                    <h5><strong>From: </strong> <%= @booking.start_date%> </h5>
+                    <h5><strong>To: </strong> <%= @booking.end_date %> </h5>
+                    <h5><strong>Price: </strong> <%= @animal.price %> $</h5>
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                  <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>-->
+                  <button type="button" class="add-btn">Confirm</button>
+                </div>
+            </div>
+          </div>

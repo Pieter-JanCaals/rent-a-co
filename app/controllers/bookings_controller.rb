@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @pending = @bookings.pending
     @confirmed = @bookings.confirmed
     @rejected = @bookings.rejected
+    @owner_pending =
   end
 
   def create
