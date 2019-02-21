@@ -5,7 +5,7 @@ function previewFile() {
     var preview = document.querySelector('#img-preview');
     var file    = fileUploadInput.files[0];
     var reader  = new FileReader();
-
+    
     reader.addEventListener("load", function () {
       preview.src = reader.result;
     }, false);
