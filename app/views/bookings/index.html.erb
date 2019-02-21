@@ -27,8 +27,12 @@
     <span>Animal: <%= booking.animal.name %></span>
   </div>
   <div class="col-xs-4">
-    <span>Start_date: <%= booking.start_date %></span>
-    <span>End_Date: <%= booking.end_date %></span>
+    <div class="row">
+      <span>Start_date: <%= booking.start_date.strftime("%A, %b %d") %></span>
+    </div>
+    <div class="row">
+      <span>End_Date: <%= booking.end_date.strftime("%A, %b %d") %></span>
+    </div>
   </div>
   <div class="col-xs-4">
     <p>Content: <%= booking.content %></p>
