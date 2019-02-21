@@ -21,9 +21,9 @@
     </div>
 
     <div class="row">
-        <% @animals.each do |animal| %>
+        <% @animals.each_with_index do |animal, index| %>
           <div class="col-xs-4">
-            <div id="monster" class="hideme">
+            <div <%= index < 3 ? "class=first_elements style=opacity:0;" : "class=hideme" %>>
               <div class="animal-card">
                 <div class="animal-card-image"><%= cl_image_tag(animal.photo, :alt => "animal photo") %></div>
                 <div class="animal-card-content">
