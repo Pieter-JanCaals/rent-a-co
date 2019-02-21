@@ -6,8 +6,6 @@ function previewFile() {
     var file    = fileUploadInput.files[0];
     var reader  = new FileReader();
 
-    // debugger;
-
     reader.addEventListener("load", function () {
       preview.src = reader.result;
     }, false);
