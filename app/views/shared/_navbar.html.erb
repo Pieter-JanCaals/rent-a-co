@@ -1,6 +1,6 @@
 <div class="navbar-lewagon">
   <a href=<%= animals_path %> >
-    <img src="rentaco.png" class="brand">
+    <%=image_tag "rentaco.png", class: "brand"%>
   </a>
 
   <!-- displayed on laptops -->
@@ -18,7 +18,7 @@
       </div>
 
       <div class="dropdown">
-        <img src='mrfox.jpg' class="avatar-bordered avatar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+        <%=image_tag "avatar.png", class: "avatar-bordered avatar dropdown-toggle"%>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
           <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>

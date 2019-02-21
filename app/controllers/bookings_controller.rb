@@ -11,6 +11,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.start_date = Date.parse(params[:booking][:start_date])
+    @booking.end_date = Date.parse(params[:booking][:end_date])
     authorize @booking
     @booking.animal = @animal
     # for testing purpuses
@@ -49,6 +51,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:content, :start_date, :end_date)
+    params.require(:booking).permit(:content)
   end
 end
