@@ -1,9 +1,12 @@
 
 # First delete all existing entries in the database and start with a clean slate
+print "Deleting all databases content..."
 
 Booking.destroy_all
 Animal.destroy_all
 User.destroy_all
+
+puts "Done!"
 
 # Some hard coded animal species where we will chose one from each time an animal
 # is created
@@ -59,7 +62,7 @@ ANIMAL_SPECIES = ["Bear", "Monkey", "Dolphin", "Zebra", "Elephant", "Lion", "Sna
 
 # These are the seeds to be used for the pitch. They can be discarted once it's done.
 
-puts "Generating user..."
+print "Generating user..."
 @main_user = User.create!(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
@@ -69,7 +72,7 @@ puts "Generating user..."
 )
 puts "Done!"
 
-puts "Generating animals..."
+print "Generating animals..."
 def create_animal(
     name: Faker::FunnyName.name,
     species: ANIMAL_SPECIES[rand(0...ANIMAL_SPECIES.size)],
@@ -97,7 +100,7 @@ animal_f = create_animal(species: "Bear", description: "Gentle, great with child
 
 puts "Done!"
 
-puts "Generating bookings..."
+print "Generating bookings..."
 Booking.create!(
   user: @main_user,
   animal: animal_b,
@@ -107,4 +110,4 @@ Booking.create!(
   )
 puts "Done!"
 
-puts "All done!"
+puts "Finished!"

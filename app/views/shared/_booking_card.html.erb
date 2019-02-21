@@ -18,41 +18,37 @@
   <div class="col-xs-4">
     <p>Content: <%= booking.content %></p>
   </div>
-</div>
-    <%= link_to "Edit", animal_path(booking.animal) %>
-    <%= link_to "Cancel this booking", booking_path(booking),
-        method: :delete,
-        data: { confirm: "Are you sure you want to cancel this booking?" } %>
-    <br>
-  </div>
-  <% end %>
-
-
-
-
-<% bookings.each do |booking| %>
-  <div class="row">
     <div class="col-xs-4">
-    <p><%= cl_image_tag(booking.animal.photo, :alt => "animal photo") %></p>
+      <p>Status: <% if booking.confirmed %>
+           Approved
+          <% elsif booking.confirmed == false %>
+           Rejected
+          <% else %>
+            Pending
+        <% end %>
+      </p>
   </div>
-  <div class="animal-card-title">
-    <div class="col-xs-4">
-    <span>Animal: <%= booking.animal.name %></span>
   </div>
-  <div class="col-xs-4">
-    <span>Start_date: <%= booking.start_date %></span>
-    <span>End_Date: <%= booking.end_date %></span>
-  </div>
-  <div class="col-xs-4">
-    <p>Content: <%= booking.content %></p>
-  </div>
-  <% if booking.confirmed.nil? %>
-    <div>
+   <% if booking.confirmed.nil? %>
+    <% if booking.animal.user == current_user %>
+     <%= link_to "Approve", booking_respond_path(booking, confirmed: true),
+          method: :post,
+          data: { confirm: "Are you sure you want to approved this booking?" } %>
+    <%= link_to "Decline", booking_respond_path(booking, confirmed: false),
+          method: :post,
+          data: { confirm: "Are you sure you want to decline this booking?" } %>
+    <% else %>
       <%= link_to "Edit", animal_path(booking.animal) %>
       <%= link_to "Cancel this booking", booking_path(booking),
           method: :delete,
           data: { confirm: "Are you sure you want to cancel this booking?" } %>
-      <br>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
+    <br>
+  </div>
 <% end %>
+
+
+
+
+
