@@ -1,56 +1,39 @@
-<!-- Pseudo code:
+<div class="main-container">
+  <div id="backgroundpic" class="map" style="background-image: url('<%= cl_image_path @animal.photo %>')">
 
-1- add div grid layout for pictures of animal
-2- add name/type/description in that order (reviews eventually)
-2- add div for containing Price/calendar (from...to...)/message/BOOK button that redirects to confirm booking page
- -->
-
- <div class="map" style="background-image: url('<%= cl_image_path @animal.photo %>')"></div>
-
-<div class="container margin-top-negative">
-  <div class="row">
-    <div class="col-8">
+  <div class="fixbackground info_card">
+    <div class="container">
       <div class="animal-show-card">
-        <%= cl_image_tag(@animal.photo, :alt => "animal photo") %>
-        <h1><%= @animal.name %></h1>
-      </div>
-      <div class="animal-show-card">
-        <h3>A bit more about this animal...</h3>
-        <p><%= @animal.description %></p>
-    </div>
-    <div class="animal-show-card">
-      <h3>Price</h3>
-      <div class="flex">
-        <div class="flex ml-3">
-          <i class="material-icons mr-2">$</i> <%= @animal.price %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-4">
-      <div class="animal-show-card">
-        <h5>Book this animal!</h5>
-        <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :start_date, as: :string  %>
-          <%= f.input :end_date, as: :string %>
-          <%= f.input :content, label: "Message" %>
-          <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
-        <% end %>
-        </div>
-      </div>
-
-      <div class="animal-show-card">
-        <div class="flex-align">
-          <h6 class="no-mb">Share</h6>
-
-          <div class="flex">
-            <i class="fa fa-facebook-square fa-2x mr-2"></i>
-            <i class="fa fa-twitter-square fa-2x mr-2"></i>
-            <i class="fa fa-pinterest-square fa-2x mr-2"></i>
-            <i class="fa fa-envelope-square fa-2x"></i>
+        <div class="row">
+          <div class="col-md-5">
+            <%= cl_image_tag(@animal.photo, :alt => "animal photo") %>
+            <h1><strong><%= @animal.name %></strong></h1>
+          </div>
+          <div class="col-md-7">
+            <h3>Get to know <%= @animal.name %></h3>
+            <p><%= @animal.description %></p>
+            <h4><strong>Price: </strong>  <%= @animal.price %><i class="material-icons mr-2">$</i></h4>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="fixbackground form_card">
+     <div class="container">
+    <div class="col-4">
+      <div class="animal-show-card">
+          <h5>Book this animal!</h5>
+            <%= simple_form_for [@animal, @booking] do |f| %>
+              <%= f.input :start_date, as: :string  %>
+              <%= f.input :end_date, as: :string %>
+              <%= f.input :content, label: "Message" %>
+              <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
+            <% end %>
+          </div>
+        </div>
+        </div>
+      </div>
+  </div>
 </div>
+
