@@ -3,18 +3,16 @@
       @pending = all pending bookings for the current_user
       @confirmed = all confirmed bookings for the current_user
       @rejected = all rejected bookings for the current_user
--->
 
 
-
-<h1>My Bookings</h1>
+<h1>Bookings</h1>-->
 <div class="container">
 <!-- Checks if a user doesn't have any bookings -->
 <% if @bookings.size.zero? %>
   <h3>You don't have any bookings yet!</h3>
 <% end %>
 
-<!-- Display the pending bookings -->
+<!-- Display the pending bookings
 <% if @pending.size.positive? %>
   <h3>Pending bookings:</h3>
   <% @pending.each do |booking| %>
@@ -45,7 +43,7 @@
     <br>
   </div>
   <% end %>
-<% end %>
+<% end %>-->
 
 <!-- Display the confirmed bookings -->
 <% if @confirmed.size.positive? %>
@@ -71,4 +69,62 @@
   <% end %>
 <% end %>
 </div>
+<!-- ################################ -->
+
+
+<br>
+<br>
+<br>
+
+<div class="panel panel-default">
+<% @pending.each do |booking| %>
+  <div class="container">
+    <div class="row">
+      <div class="panel-heading">
+        <h4 class="panel-title"><%= booking.animal.name %></h4>
+      </div>
+      <div class="panel-body">
+        <div class="col-xs-3">
+          <p><%= cl_image_tag(booking.animal.photo, :alt => "animal photo", width: 250) %></p>
+        </div>
+        <div class="col-xs-7">
+          <h5 class="card-title"><%= booking.animal.species %></h5>
+          <p class="card-text"> From: <%= booking.start_date.strftime("%A, %b %d") %></p>
+          <p class="card-text">To: <%= booking.end_date.strftime("%A, %b %d") %></p>
+          <%= link_to "Edit", animal_path(booking.animal) %>
+          <%= link_to "Cancel this booking", booking_path(booking),
+          method: :delete,
+          data: { confirm: "Are you sure you want to cancel this booking?" } %>
+        </div>
+      </div>
+      </div>
+  </div>
+<% end %>
+
+</div>
+
+
+<% @pending.each do |booking| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= cl_image_tag(booking.animal.photo, :alt => "animal photo", width: 250) %>
+          <div class="caption">
+            <h3><%= booking.animal.species %></h3>
+             <h5 class="card-title"><%= booking.animal.species %></h5>
+            <p class="card-text"> From: <%= booking.start_date.strftime("%A, %b %d") %></p>
+            <p class="card-text">To: <%= booking.end_date.strftime("%A, %b %d") %></p>
+            <span class="add-btn"> <%= link_to "Edit", animal_path(booking.animal) %></span>
+            <%= link_to "Cancel this booking", booking_path(booking),
+            method: :delete,
+            data: { confirm: "Are you sure you want to cancel this booking?" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
 
