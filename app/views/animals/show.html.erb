@@ -31,8 +31,8 @@
       <div class="animal-show-card">
         <h5>Book this animal!</h5>
         <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :start_date, :as => :date, :order => [:day, :month, :year] %>
-          <%= f.input :end_date, :as => :date, :order => [:day, :month, :year] %>
+          <%= f.input :start_date, as: :string  %>
+          <%= f.input :end_date, as: :string %>
           <%= f.input :content, label: "Message" %>
           <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
         <% end %>
