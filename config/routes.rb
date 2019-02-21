@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'animals#index'
   get 'users/owner', to: 'users#become_owner', as: 'owner'
+  post 'bookings/:id', to: 'bookings#confirm_booking', as: 'booking_respond'
   resources :animals do
     resources :bookings, only: [:create, :update]
     resources :reviews, only: [:create]
