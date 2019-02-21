@@ -1,0 +1,26 @@
+<% bookings.each do |booking| %>
+  <div class="row">
+    <div class="col-xs-4">
+    <p><%= cl_image_tag(booking.animal.photo, :alt => "animal photo") %></p>
+  </div>
+  <div class="animal-card-title">
+    <div class="col-xs-4">
+    <span>Animal: <%= booking.animal.name %></span>
+  </div>
+  <div class="col-xs-4">
+    <span>Start_date: <%= booking.start_date %></span>
+    <span>End_Date: <%= booking.end_date %></span>
+  </div>
+  <div class="col-xs-4">
+    <p>Content: <%= booking.content %></p>
+  </div>
+  <% if booking.confirmed.nil? %>
+    <div>
+      <%= link_to "Edit", animal_path(booking.animal) %>
+      <%= link_to "Cancel this booking", booking_path(booking),
+          method: :delete,
+          data: { confirm: "Are you sure you want to cancel this booking?" } %>
+      <br>
+    </div>
+  <% end %>
+<% end %>

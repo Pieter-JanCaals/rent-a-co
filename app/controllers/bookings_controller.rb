@@ -4,9 +4,12 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking).where(user: current_user)
-    @pending = @bookings.where(confirmed: nil)
-    @confirmed = @bookings.where(confirmed: true)
-    @rejected = @bookings.where(confirmed: false)
+    # @pending = @bookings.where(confirmed: nil)
+    # @confirmed = @bookings.where(confirmed: true)
+    # @rejected = @bookings.where(confirmed: false)
+    @pending = @bookings.pending
+    @confirmed = @bookings.confirmed
+    @rejected = @bookings.rejected
   end
 
   def create
