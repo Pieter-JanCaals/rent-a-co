@@ -1,0 +1,15 @@
+const modal = () => {
+  $('#submitBtn').click(function() {
+    console.log("clicked")
+    $('#startDate').text($('#booking_start_date').val());
+    $('#endDate').text($('#booking_end_date').val());
+  })
+
+  $('#submit').click(function() {
+    $('#bookingForm').submit();
+    $('#exampleModalCenter').modal('hide');
+    window.location.href = "/bookings";
+  })
+}
+
+export { modal }
