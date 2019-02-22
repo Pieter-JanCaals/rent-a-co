@@ -1,21 +1,21 @@
-// Specific CSS for your home-page spalsh screen
-// https://kilianvalkhof.com/2017/design/sloped-edges-with-consistent-angle-in-css/
 .header-wrap{
   overflow:hidden;
-  background-color: #233142;
+  background-color: $txt;
 }
 
 .header-inside{
-  background-color: $main_txt;
-  opacity: 0.4;
-  height:100%;
+  margin:0 auto;
+  width:100%;
+  text-align: center;
+  position:relative;
 }
 
 .header{
+  background-image: url('hollywood-sign.jpg');
+   opacity: 0.2;
   //parallax scrolling #383737
-  background-image: url("https://loremflickr.com/320/240");
-  height: 500px;
   background-attachment: fixed;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,11 +47,14 @@
 }
 
 .header-info{
+  position: absolute;
+  top: -180;
   color:white;
-  padding-top: 150px;
+  padding-top: 120px;
+  margin: 0 auto;
   // counter the slanting picture
-  margin-left:5%;
-  transform:rotate(-2deg);
+  //transform:rotate(-2deg);
+  //margin: 0 auto;
 }
 
 /////fadein effect
@@ -61,7 +64,9 @@
     opacity:0;
 }
 
-
+#main_title{
+  font-size: 60px;
+}
 
 
 
