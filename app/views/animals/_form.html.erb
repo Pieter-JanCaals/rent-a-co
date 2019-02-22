@@ -2,7 +2,7 @@
   <%= f.input :name, class: 'form-control' %>
   <%= f.input :species, class: 'form-control' %>
   <%= f.input :photo, class: 'form-control' %>
-  <img src="" height="200" id="img-preview">
+  <%= image_tag "noimagefound.jpg", id: "img-preview" %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.input :description, class: 'form-control' %>
   <%= f.input :price, class: 'form-control' %>
