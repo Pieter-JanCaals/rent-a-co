@@ -23,12 +23,21 @@
      <div class="container">
     <div class="col-4">
       <div class="animal-show-card">
-        <h5>Book this animal!</h5>
-        <%= simple_form_for [@animal, @booking], input_html: { id: :bookingForm }, remote: true do |f| %>
-          <%= f.input :start_date, as: :string %>
-          <%= f.input :end_date, as: :string %>
-          <%= f.input :content, label: "Message", input_html: { id: :contentInput } %>
-          <%= f.button :button, "Book", class: "add-btn", id: :submitBtn, data: {target: "#exampleModalCenter", toggle: "modal", dismiss: "modal" } %>
+        <% if @animal.user == current_user %>
+          <% if @bookings.size.zero? %>
+            <h3><%= @animal.name %>'s has no pending request yet.</h3>
+          <% else %>
+            <h3><%= @animal.name %>'s pending requests:</h3>
+            <%= render partial: "shared/booking_card", locals: {bookings: @bookings} %>
+          <% end %>
+        <% else %>
+          <h5>Book this animal!</h5>
+          <%= simple_form_for [@animal, @booking], input_html: { id: :bookingForm }, remote: true do |f| %>
+            <%= f.input :start_date, as: :string %>
+            <%= f.input :end_date, as: :string %>
+            <%= f.input :content, label: "Message", input_html: { id: :contentInput } %>
+            <%= f.button :button, "Book", class: "add-btn", id: :submitBtn, data: {target: "#exampleModalCenter", toggle: "modal", dismiss: "modal" } %>
+          <% end %>
         <% end %>
         </div>
       </div>
@@ -46,9 +55,9 @@
         </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
-
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
