@@ -1,6 +1,6 @@
 .header-wrap{
   overflow:hidden;
-  background-color: $txt;
+  background-color: $main_txt;
 }
 
 .header-inside{
@@ -12,10 +12,10 @@
 
 .header{
   background-image: url('hollywood-sign.jpg');
-   opacity: 0.2;
+  opacity: 0.2;
   //parallax scrolling #383737
   background-attachment: fixed;
-  height: 100vh;
+  height: 90vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,26 +47,35 @@
 }
 
 .header-info{
-  position: absolute;
-  top: -180;
-  color:white;
-  padding-top: 120px;
-  margin: 0 auto;
+    position: absolute;
+    display:block;
+    top: 2%;
+    left: 25%;
+    color: white;
+    padding-top: 120px;
+    margin: 0 auto;
+    z-index: 31;
+    text-align: left;
   // counter the slanting picture
   //transform:rotate(-2deg);
   //margin: 0 auto;
 }
+  #main_title{
+    font-size: 75px;
+    padding-bottom:5px;
+  }
+
+  #main_tagline{
+    margin-bottom:40px
+  }
 
 /////fadein effect
 
 .hideme
 {
-    opacity:0;
+  opacity:0;
 }
 
-#main_title{
-  font-size: 60px;
-}
 
 
 

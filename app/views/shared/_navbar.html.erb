@@ -8,7 +8,7 @@
 
     <% if user_signed_in? %>
       <% unless current_user.owner %>
-        <%= link_to "Rent Your Pet!", owner_path, class: "navbar-lewagon-link host-btn" %>
+        <%= link_to "Rent Your Pet!", owner_path, class: "rent-btn" %>
       <% end %>
       <div class="badge-container">
         <% if policy(Animal).create? %>
@@ -20,10 +20,12 @@
 
       <div class="dropdown">
         <%=image_tag "avatar.png", class: "avatar-bordered avatar dropdown-toggle"%>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
+        <div class="nav-hover">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
+          </div>
         </div>
       </div>
     <% else %>
