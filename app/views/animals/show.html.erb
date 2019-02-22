@@ -38,51 +38,32 @@
             <% end %>
             </div>
           </div>
+
+
+
+
+            <!-- Review card-->
           <div class="col-md-6 col-sm-12">
-
-            <!-- Review card -->
-              <div class="animal-show-card">
-                <h3><%= @reviews.size.positive? ? "Here's what others thought of #{@animal.name}:" : "Be the first to rate #{@animal.name}!"%></h3>
-                <div class="reviews-container">
-                  <%= render partial: "shared/review_card", locals: { reviews: @reviews, animal: @animal, } %>
-                </div>
-                <div>
-                  <% if user_signed_in? %>
-                    <% unless @animal.user == current_user %>
-                      <%= render partial: "shared/review_form", locals: { animal: @animal, review: @review } %>
-                    <% end %>
-                  <% else %>
-                    <h3>Login or sign up to leave a review</h3>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-
-            <!-- end review card -->
-          </div>
-        </div>
-
-      <div class="fixbackground form_card">
-        <div class="container">
-          <div class="col-4">
             <div class="animal-show-card">
-              <h3><%= @reviews.size.positive? ? "Here's what others thought of #{@animal.name}:" : "Be the first to rate #{@animal.name}!"%></h3>
-              <%= render partial: "shared/review_card", locals: { reviews: @reviews, animal: @animal, } %>
+                <h3><%= @reviews.size.positive? ? "What others thought of #{@animal.name}:" : "Be the first to rate #{@animal.name}!"%></h3>
+                <div class="reviews-container">
+                    <%= render partial: "shared/review_card", locals: { reviews: @reviews, animal: @animal, } %>
+                </div>
             </div>
             <div>
               <% if user_signed_in? %>
                 <% unless @animal.user == current_user %>
                   <%= render partial: "shared/review_form", locals: { animal: @animal, review: @review } %>
-                <% end %>
+              <% end %>
               <% else %>
                 <h3>Login or sign up to leave a review</h3>
-              <% end %>
-
+                <% end %>
             </div>
+            <!-- end review card -->
+
           </div>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

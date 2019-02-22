@@ -1,3 +1,17 @@
+.booking_content textarea{
+    min-height: 150px;
+  }
+
+.reviews-container {
+  display: block;
+  overflow-x: hidden;
+  height:190px;
+}
+
+#img-preview {
+  height: 200px;
+}
+
 .pending_request{
   color: $main_txt;
 }
