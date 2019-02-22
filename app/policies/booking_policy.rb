@@ -20,6 +20,10 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def confirm_booking?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all

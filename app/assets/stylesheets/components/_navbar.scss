@@ -3,11 +3,17 @@ $txt: #233142;
 $highlight:#facf5a;
 $accent:#ff5959;
 
+#brand-name {
+
+ font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+ color: #ff5959;
+}
+
 .navbar-lewagon {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
+  background: #233142;
   padding: 16px 24px;
   position:fixed;
   top: 0 ;
@@ -26,7 +32,7 @@ $accent:#ff5959;
 
 .navbar-lewagon .navbar-lewagon-actions .navbar-lewagon-link {
   margin-left: 24px;
-  color: main_txt;
+  color: white;
 }
 .navbar-lewagon .navbar-lewagon-actions .navbar-lewagon-link:hover {
   color: txt;
@@ -47,4 +53,15 @@ $accent:#ff5959;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(79, 157, 166,0.5);
   border: white 1px solid;
+}
+
+input[type=text] {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 50%;
 }
