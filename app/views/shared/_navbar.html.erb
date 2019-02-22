@@ -7,7 +7,7 @@
   <div class="navbar-lewagon-actions d-none d-sm-flex">
 
     <% if user_signed_in? %>
-      <% unless current_user.owner 
+      <% unless current_user.owner %>
         <button class="rent-btn" data-target="#becomeOwnerModal" data-toggle="modal" data-dismiss="modal">Rent Your Pet!</button>
       <% end %>
       <div class="badge-container">
