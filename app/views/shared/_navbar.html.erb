@@ -12,7 +12,7 @@
       <% end %>
       <div class="badge-container">
         <% if policy(Animal).create? %>
-          <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
+          <%= link_to "My Animals", animals_path(query: current_user.id), class: "navbar-lewagon-link"%>
           <%= link_to "Add Animal", new_animal_path, class: "navbar-lewagon-link" %>
         <% end %>
         <%= link_to "My Bookings", bookings_path, class: "navbar-lewagon-link" %>

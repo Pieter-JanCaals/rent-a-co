@@ -4,7 +4,11 @@ class AnimalsController < ApplicationController
   before_action :set_booking, only: [:show]
 
   def index
-    @animals = policy_scope(Animal)
+    if params[:query].present? && current_user.id == params[:query].to_i
+      @animals = policy_scope(Animal).where(user_id: params[:query].to_i)
+    else
+      @animals = policy_scope(Animal)
+    end
   end
 
   def show
