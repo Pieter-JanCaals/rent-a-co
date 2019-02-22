@@ -1,26 +1,25 @@
 <div class="wrapper">
   <div class="col-xs-10 col-sm-18">
-    <div class="message">
       <% bookings.each do |booking| %>
+    <div class="row">
+    <div class="message">
         <%= cl_image_tag(booking.animal.photo, :alt => 'animal photo', class: "avatar-large")%>
         <div class="message-name">
-          <h3><strong>Animal: <%= booking.animal.name %></strong></h3>
-          <p><span>Start Date: <%= booking.start_date.strftime("%A, %b %d") %></span></p>
-          <p><span>End Date: <%= booking.end_date.strftime("%A, %b %d") %></span></p>
-    </div>
+          <h3><strong>Co-star: <br> <%= booking.animal.name %></strong></h3>
+          <p><span>From: <%= booking.start_date.strftime("%A, %b %d") %></span></p>
+          <p><span>To: <%= booking.end_date.strftime("%A, %b %d") %></span></p>
+        </div>
         <div class="message-body">
-          <p><strong>I am not sure yet!</strong></p>
           <p>Message: <%= booking.content %></p>
         </div>
         <div class="message-status">
-          <p>Status: <% if booking.confirmed %>
-                Approved
-              <% elsif booking.confirmed == false %>
-                Rejected
-              <% else %>
-                Pending
-              <% end %>
-            </p>
+         <% if booking.confirmed %>
+                <p class="status accepted">Accepted</p>
+          <% elsif booking.confirmed == false %>
+                <p class="status declined">Declined</p>
+          <% else %>
+                <p class="status pending">Pending</p>
+          <% end %>
           <p class="price"><%= booking.animal.price %>$</p>
         </div>
 
@@ -42,10 +41,10 @@
           <br>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
-
-
+      <% end %>
+</div>
 
 
 
