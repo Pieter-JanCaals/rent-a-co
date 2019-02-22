@@ -1,0 +1,5 @@
+<% if @review.valid? %>
+reiewList = document.querySelector(#reviews);
+reiewList.insertAdjacentHTML("beforeend", <li><%= @review.content %></li>)
+
+<% end %>
