@@ -1,21 +1,24 @@
 function previewFile() {
   const fileUploadInput = document.querySelector("#animal_photo");
 
-  fileUploadInput.addEventListener("change", () => {
-    var preview = document.querySelector('#img-preview');
-    var file    = fileUploadInput.files[0];
-    var reader  = new FileReader();
+  if (fileUploadInput != null) {
+    fileUploadInput.addEventListener("change", () => {
+      var preview = document.querySelector('#img-preview');
+      var file    = fileUploadInput.files[0];
+      var reader  = new FileReader();
 
-    // debugger;
+      // debugger;
 
-    reader.addEventListener("load", function () {
-      preview.src = reader.result;
-    }, false);
+      reader.addEventListener("load", function () {
+        preview.src = reader.result;
+      }, false);
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  });
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
 }
 
 export { previewFile };

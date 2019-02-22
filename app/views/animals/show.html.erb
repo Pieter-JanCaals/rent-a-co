@@ -30,11 +30,11 @@
     <div class="col-4">
       <div class="animal-show-card">
         <h5>Book this animal!</h5>
-        <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :start_date, as: :string  %>
+        <%= simple_form_for [@animal, @booking], input_html: { id: :bookingForm }, remote: true do |f| %>
+          <%= f.input :start_date, as: :string %>
           <%= f.input :end_date, as: :string %>
-          <%= f.input :content, label: "Message" %>
-          <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
+          <%= f.input :content, label: "Message", input_html: { id: :contentInput } %>
+          <%= f.button :button, "Book", class: "add-btn", id: :submitBtn, data: {target: "#exampleModalCenter", toggle: "modal", dismiss: "modal" } %>
         <% end %>
         </div>
       </div>
@@ -52,5 +52,38 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle"><strong>Booking Confrimation</strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+          <div class="col-md-4 ml-auto">
+            <%= cl_image_tag(@animal.photo, :alt => "animal photo", width: 200) %>
+          </div>
+          <div class="col-md-6 ml-auto" style="margin-left:30px;" >
+            <h2><%= @animal.name %></h2>
+            <h3><%= @animal.species %></h3>
+          </div>
+        </div>
+          <h5><h4><strong>About: </strong></h4> <%= @animal.description %></h5>
+          <h5><strong>From: </strong><div id="startDate"></div></h5>
+          <h5><strong>To: </strong><div id="endDate"></h5>
+          <h5><strong>Price: </strong> <%= @animal.price %> $</h5>
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>-->
+        <button id="submit" type="button" class="add-btn">Confirm</button>
+      </div>
   </div>
 </div>
