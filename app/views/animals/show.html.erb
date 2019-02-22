@@ -39,7 +39,26 @@
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
+
             <!-- Review card -->
+              <div class="animal-show-card">
+                <h3><%= @reviews.size.positive? ? "Here's what others thought of #{@animal.name}:" : "Be the first to rate #{@animal.name}!"%></h3>
+                <div class="reviews-container">
+                  <%= render partial: "shared/review_card", locals: { reviews: @reviews, animal: @animal, } %>
+                </div>
+                <div>
+                  <% if user_signed_in? %>
+                    <% unless @animal.user == current_user %>
+                      <%= render partial: "shared/review_form", locals: { animal: @animal, review: @review } %>
+                    <% end %>
+                  <% else %>
+                    <h3>Login or sign up to leave a review</h3>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <!-- end review card -->
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 <%= simple_form_for [@animal, @review] do |f| %>
   <%= f.input :content, class: 'form-control', placeholder: "Write a review", label: false %>
   <div class="mt-3">
-    <%= f.submit "Leave a review" %>
+    <%= f.submit "Leave a review", class: "add-btn" %>
   </div>
 <% end %>

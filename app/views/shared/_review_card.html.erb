@@ -1,7 +1,7 @@
 <% reviews.each do |review| %>
 <div class="row">
   <div class="col-xs-4">
-    <p><%= cl_image_tag(review.user.photo, :alt => "#{review.user.username} avatar", :class => "avatar") %></p>
+    <p><%= cl_image_tag(review.user.photo, :alt => "#{review.user.username} avatar", :class => "avatar-large") %></p>
   </div>
   <div class="animal-card-title">
     <div class="col-xs-4">
