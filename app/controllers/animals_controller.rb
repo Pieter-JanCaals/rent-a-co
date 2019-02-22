@@ -12,6 +12,8 @@ class AnimalsController < ApplicationController
       @bookings = @animal.bookings.where(confirmed: nil)
     end
     @booking = Booking.new unless @booking.confirmed.nil?
+    @reviews = Review.where(animal: @animal)
+    @review = Review.new
     authorize @animal
   end
 

@@ -19,7 +19,7 @@
       </div>
 
       <div class="dropdown">
-        <%=image_tag "avatar.png", class: "avatar-bordered avatar dropdown-toggle"%>
+        <%= cl_image_tag(current_user.photo, :alt => "#{current_user.username} avatar", :class => "avatar") %>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
           <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>

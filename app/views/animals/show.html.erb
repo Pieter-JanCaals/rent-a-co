@@ -23,24 +23,42 @@
      <div class="container">
     <div class="col-4">
       <div class="animal-show-card">
-        <% if @animal.user == current_user %>
-          <% if @bookings.size.zero? %>
-            <h3><%= @animal.name %>'s has no pending request yet.</h3>
+        <% if user_signed_in? %>
+          <% if @animal.user == current_user %>
+            <% if @bookings.size.zero? %>
+              <h3><%= @animal.name %>'s has no pending request yet.</h3>
+            <% else %>
+              <h3><%= @animal.name %>'s pending requests:</h3>
+              <%= render partial: "shared/booking_card", locals: { bookings: @bookings } %>
+            <% end %>
           <% else %>
-            <h3><%= @animal.name %>'s pending requests:</h3>
-            <%= render partial: "shared/booking_card", locals: {bookings: @bookings} %>
+            <h5>Book this animal!</h5>
+            <%= render partial: "shared/booking_form", locals: { animal: @animal, booking: @booking } %>
           <% end %>
         <% else %>
-          <h5>Book this animal!</h5>
-          <%= simple_form_for [@animal, @booking], input_html: { id: :bookingForm }, remote: true do |f| %>
-            <%= f.input :start_date, as: :string %>
-            <%= f.input :end_date, as: :string %>
-            <%= f.input :content, label: "Message", input_html: { id: :contentInput } %>
-            <%= f.button :button, "Book", class: "add-btn", id: :submitBtn, data: {target: "#exampleModalCenter", toggle: "modal", dismiss: "modal" } %>
-          <% end %>
+          <h3>Login or sign up to book <%= @animal.name %>!</h3>
         <% end %>
         </div>
       </div>
+
+      <div class="fixbackground form_card">
+        <div class="container">
+          <div class="col-4">
+            <div class="animal-show-card">
+              <h3><%= @reviews.size.positive? ? "Here's what others thought of #{@animal.name}:" : "Be the first to rate #{@animal.name}!"%></h3>
+              <%= render partial: "shared/review_card", locals: { reviews: @reviews, animal: @animal, } %>
+            </div>
+            <div>
+              <% if user_signed_in? %>
+                <% unless @animal.user == current_user %>
+                  <%= render partial: "shared/review_form", locals: { animal: @animal, review: @review } %>
+                <% end %>
+              <% else %>
+                <h3>Login or sign up to leave a review</h3>
+              <% end %>
+
+            </div>
+          </div>
 
       <div class="animal-show-card">
         <div class="flex-align">

@@ -1,10 +1,11 @@
 
 # First delete all existing entries in the database and start with a clean slate
-print "Deleting all databases content..."
+print "Cleaning database..."
 
 Booking.destroy_all
 Animal.destroy_all
 User.destroy_all
+Review.destroy_all
 
 puts "Done!"
 
@@ -66,6 +67,7 @@ print "Generating user..."
 @owner = User.create!(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
+  username: "Owner",
   email: "owner@gmail.com",
   password: "lewagon",
   owner: true
@@ -76,7 +78,9 @@ print "Generating user..."
   last_name: Faker::Name.last_name,
   email: "notowner@gmail.com",
   password: "lewagon",
-  owner: false
+  owner: false,
+  remote_photo_url: "public/mrfox.jpg",
+  username: "Renter"
 )
 
 puts "Done!"
@@ -118,5 +122,16 @@ Booking.create!(
   content: "This panthera tigris will be perfect for my movie. I NEED IT"
   )
 puts "Done!"
+
+print "Generating reviews..."
+
+Review.create!(
+  user: @not_owner,
+  animal: animal_a,
+  content: "He was the best!"
+  )
+
+puts "Done!"
+
 
 puts "Finished!"
