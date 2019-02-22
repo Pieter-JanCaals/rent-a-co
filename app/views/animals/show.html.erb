@@ -20,20 +20,27 @@
   </div>
 
   <div class="fixbackground form_card">
-     <div class="container">
-    <div class="col-4">
-      <div class="animal-show-card">
-          <h5>Book this animal!</h5>
+    <div class="container">
+      <div class="col-4">
+        <div class="animal-show-card">
+          <% if @animal.user == current_user %>
+            <% if @bookings.size.zero? %>
+              <h3><%= @animal.name %>'s has no pending request yet.</h3>
+            <% else %>
+              <h3><%= @animal.name %>'s pending requests:</h3>
+              <%= render partial: "shared/booking_card", locals: {bookings: @bookings} %>
+            <% end %>
+          <% else %>
+            <h5>Book this animal!</h5>
             <%= simple_form_for [@animal, @booking] do |f| %>
               <%= f.input :start_date, as: :string  %>
               <%= f.input :end_date, as: :string %>
               <%= f.input :content, label: "Message" %>
               <%= f.button :button, "Book", type: :submit, class: "add-btn", data: {confirm: "Are you sure this information is correct?"} %>
             <% end %>
-          </div>
-        </div>
+          <% end %>
         </div>
       </div>
+    </div>
   </div>
 </div>
-
