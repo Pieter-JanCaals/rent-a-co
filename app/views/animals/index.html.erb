@@ -12,7 +12,7 @@
            <h2 id="main_tagline">Find your Co star today!</h2>
             <div class="action">
               <%= form_tag animals_path, method: :get do %>
-              <%= text_field_tag :search_query, params[:search_query],class: "form-control", placeholder: "Find an animal"%>
+              <%= text_field_tag :search_query, params[:search_query],class: "form-control search-field", placeholder: "Search", style: "font-family: Arial, FontAwesome;"%>
               <% end %>
             </div>
         </div>
