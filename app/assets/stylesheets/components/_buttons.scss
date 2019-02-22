@@ -50,3 +50,29 @@
     background-color: #fff;
     text-decoration: none;
   }
+
+
+.action input[type=text] {
+  background-color: none;
+  background-image: url('find.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  background-attachment:cover;
+  padding-left: 45px;
+  border-radius:20px;
+  height:55px;
+  width:150px;
+  text-decoration:none;
+  border: solid 4px $highlight;
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
