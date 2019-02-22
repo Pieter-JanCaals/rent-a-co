@@ -63,13 +63,22 @@ puts "Done!"
 # These are the seeds to be used for the pitch. They can be discarted once it's done.
 
 print "Generating user..."
-@main_user = User.create!(
+@owner = User.create!(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
-  email: "fred@mailinator.com",
+  email: "owner@gmail.com",
   password: "lewagon",
   owner: true
 )
+
+@not_owner = User.create!(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: "notowner@gmail.com",
+  password: "lewagon",
+  owner: false
+)
+
 puts "Done!"
 
 print "Generating animals..."
@@ -77,7 +86,7 @@ def create_animal(
     name: Faker::FunnyName.name,
     species: ANIMAL_SPECIES[rand(0...ANIMAL_SPECIES.size)],
     description: Faker::Hipster.paragraph,
-    user: @main_user,
+    user: @owner,
     price: Faker::Number.decimal(2),
     remote_photo_url: "http://loremflickr.com/360/300/animals"
   )
@@ -102,7 +111,7 @@ puts "Done!"
 
 print "Generating bookings..."
 Booking.create!(
-  user: @main_user,
+  user: @not_owner,
   animal: animal_b,
   start_date: DateTime.now,
   end_date: DateTime.now + (rand * 10).floor,
