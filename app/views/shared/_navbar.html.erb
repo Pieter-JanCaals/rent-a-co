@@ -8,22 +8,28 @@
 
     <% if user_signed_in? %>
       <% unless current_user.owner %>
-        <%= link_to "Rent Your Pet!", owner_path, class: "navbar-lewagon-link host-btn" %>
+        <button class="rent-btn" data-target="#becomeOwnerModal" data-toggle="modal" data-dismiss="modal">Rent Your Pet!</button>
       <% end %>
       <div class="badge-container">
         <% if policy(Animal).create? %>
-          <%= link_to "My Animals", animals_path, class: "navbar-lewagon-link" %>
+          <% if params[:query].to_i == current_user.id %>
+            <%= link_to "All Animals", animals_path, class: "navbar-lewagon-link"%>
+          <% else %>
+            <%= link_to "My Animals", animals_path(query: current_user.id), class: "navbar-lewagon-link"%>
+          <% end %>
           <%= link_to "Add Animal", new_animal_path, class: "navbar-lewagon-link" %>
         <% end %>
         <%= link_to "My Bookings", bookings_path, class: "navbar-lewagon-link" %>
       </div>
 
       <div class="dropdown">
+
         <%= cl_image_tag(current_user.photo, :alt => "#{current_user.username} avatar", :class => "avatar") %>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
           <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
+
         </div>
       </div>
     <% else %>
@@ -47,4 +53,25 @@ displayed on phone / tablet
       </div>
     </div>
   </div>-->
+</div>
+
+<div class="modal fade" id="becomeOwnerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle"><strong>Are you sure you want to start renting out your pets?</strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <h5><strong>Can you handle this responsibility?</strong></h5>
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Start renting out your pets", owner_path, class: "add-btn" %>
+        <%= link_to "Nope!", animals_path, class: "remove-btn" %>
+      </div>
+  </div>
 </div>

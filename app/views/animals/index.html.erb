@@ -1,23 +1,30 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <div class="wrapper">
         <div class="header-wrap">
-          <div class="header">
+          <div class="header" style="background-image: url('<%= asset_path 'hollywood-sign.jpg' %>')">
             <div class="header-inside">
             </div>
           </div>
         </div>
 
         <div class="header-info">
-          <h1 id="main_title">Rent a Co</h1>
-           <h2>Get your Co star today!</h2>
+          <h1 id="main_title"><strong>Rent a Co</strong></h1>
+           <h2 id="main_tagline">Find your Co star today!</h2>
             <div class="action">
-              <input type="text" name="search" placeholder="Search">
+              <input type="text" name="search" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
             </div>
           </div>
 
   <div class="container mt-3">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="page_header">All our Animals</h1>
+        <h1 class="page_header" id="page_header">
+          <% if !current_user.nil? && params[:query].to_i == current_user.id %>
+            All your animals
+          <% else %>
+            All our animals
+          <% end %>
+        </h1>
       </div>
       <div class="col-md-9 sub_txt">
         <p>There are <strong><%= @animals.count %></strong> animals to choose from!</p>
@@ -42,7 +49,16 @@
                   </div>
                 </div>
                 <div class="animal-card-actions">
-                  <%= link_to 'Book Now', animal_path(animal[:id]), class: 'add-btn'%>
+                  <% if animal.user == current_user %>
+                    <%= link_to edit_animal_path(animal) do %>
+                      <i class="fas fa-pencil-alt"></i>
+                    <% end %>
+                    <%= link_to animal_path(animal), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to 'Book Now', animal_path(animal[:id]), class: 'add-btn'%>
+                  <% end %>
                 </div>
                </div>
              </div>

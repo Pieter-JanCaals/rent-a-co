@@ -20,26 +20,28 @@
   </div>
 
   <div class="fixbackground form_card">
-     <div class="container">
-    <div class="col-4">
-      <div class="animal-show-card">
-        <% if user_signed_in? %>
-          <% if @animal.user == current_user %>
-            <% if @bookings.size.zero? %>
-              <h3><%= @animal.name %>'s has no pending request yet.</h3>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="animal-show-card">
+            <% if @animal.user == current_user %>
+              <% if @bookings.size.zero? %>
+                <h3><%= @animal.name %>'s has no pending request yet.</h3>
+              <% else %>
+                <h3><%= @animal.name %>'s pending requests:</h3>
+                <%= render partial: "shared/booking_card", locals: {bookings: @bookings} %>
+              <% end %>
             <% else %>
-              <h3><%= @animal.name %>'s pending requests:</h3>
-              <%= render partial: "shared/booking_card", locals: { bookings: @bookings } %>
+              <h5>Book this animal!</h5>
+              <%= render partial: "shared/booking_form", locals: { animal: @animal, booking: @booking } %>
             <% end %>
-          <% else %>
-            <h5>Book this animal!</h5>
-            <%= render partial: "shared/booking_form", locals: { animal: @animal, booking: @booking } %>
-          <% end %>
-        <% else %>
-          <h3>Login or sign up to book <%= @animal.name %>!</h3>
-        <% end %>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <!-- Review card -->
+          </div>
         </div>
-      </div>
 
       <div class="fixbackground form_card">
         <div class="container">
@@ -64,15 +66,7 @@
         <div class="flex-align">
           <h6 class="no-mb">Share</h6>
 
-          <div class="flex">
-            <i class="fa fa-facebook-square fa-2x mr-2"></i>
-            <i class="fa fa-twitter-square fa-2x mr-2"></i>
-            <i class="fa fa-pinterest-square fa-2x mr-2"></i>
-            <i class="fa fa-envelope-square fa-2x"></i>
-          </div>
         </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
