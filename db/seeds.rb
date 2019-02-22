@@ -80,7 +80,8 @@ def create_user(
   username: username,
   email: email,
   password: password,
-  owner: owner
+  owner: owner,
+  remote_photo_url: remote_photo_url
   )
 end
 
