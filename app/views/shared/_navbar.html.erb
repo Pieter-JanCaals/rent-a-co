@@ -23,13 +23,13 @@
       </div>
 
       <div class="dropdown">
-        <%=image_tag "avatar.png", class: "avatar-bordered avatar dropdown-toggle"%>
-        <div class="nav-hover">
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
-          </div>
+
+        <%= cl_image_tag(current_user.photo, :alt => "#{current_user.username} avatar", :class => "avatar") %>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Account</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Settings</a>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
+
         </div>
       </div>
     <% else %>
