@@ -1,48 +1,58 @@
-<!-- Available instance variables :
-      @bookings = all bookings for the current_user
-      @pending = all pending bookings for the current_user
-      @confirmed = all confirmed bookings for the current_user
-      @rejected = all rejected bookings for the current_user
-      @owner_pending = all pending booking requests foran animal owned the current_user
--->
+<div class="wrapper">
+  <h1 class="page_header">My Bookings</h1>
+  <div class="message">
+    <!-- If the user is a owner, shows the pending requests -->
+    <% if current_user.owner %>
+      <% if @owner_pending.size.positive? %>
+        <div class="col-xs-10 col-sm-18">
+          <h5 class="pending">Pending request<%= "s" if @pending.size > 1 %> for your animals:</h5>
+          <%= render partial: "shared/booking_card", locals: {bookings: @owner_pending} %>
+        </div>
+          <% else %>
+            <h5>Your co-stars has no pending requests yet</h5>
+        <% end %>
+      <% end %>
+    </div>
 
-<h1>My Bookings</h1>
+    <!-- Checks if a user doesn't have any bookings -->
+    <div class="message">
+      <% if @bookings.size.zero? %>
+        <div class="col-xs-10 col-sm-18">
+          <h5>You haven't made any booking request yet!</h5>
+          <h4>Go check our <%= link_to "amazing animals", animals_path %> and find your co-star today!</h4>
+        </div>
+      <% end %>
+    </div>
 
-<div class="container">
+    <!-- Display the pending bookings -->
+    <div class="message">
+      <% if @pending.size.positive? %>
+        <div class="col-xs-10 col-sm-18">
+          <h5 class="pending_request">Pending booking request<%= "s" if @pending.size > 1 %>:</h5>
+          <%= render partial: "shared/booking_card", locals: {bookings: @pending} %>
+        </div>
+      <% end %>
+    </div>
 
-  <!-- If the user is a owner, shows the pending requests -->
-  <% if current_user.owner %>
-    <% if @owner_pending.size.positive? %>
-       <h3>Pending request<%= "s" if @pending.size > 1 %> for your animals:</h3>
-      <%= render partial: "shared/booking_card", locals: {bookings: @owner_pending} %>
-      <% else %>
-        <h3>Your co-stars has no pending requests yet</h3>
-    <% end %>
-  <% end %>
+      <!-- Display the confirmed bookings -->
+      <div class="message">
+      <% if @confirmed.size.positive? %>
+      <div class="col-xs-10 col-sm-18">
+        <h5  class="confirmed_request">Confirmed booking<%= "s" if @confirmed.size > 1 %>:</h5>
+        <%= render partial: "shared/booking_card", locals: {bookings: @confirmed} %>
+      </div>
+      <% end %>
+    </div>
 
-  <!-- Checks if a user doesn't have any bookings -->
-  <% if @bookings.size.zero? %>
-    <h3>You haven't made any booking request yet!</h3>
-    <h4>Go check our <%= link_to "amazing animals", animals_path %> and find your co-star today!</h4>
-  <% end %>
-
-  <!-- Display the pending bookings -->
-  <% if @pending.size.positive? %>
-    <h3>Pending booking request<%= "s" if @pending.size > 1 %>:</h3>
-    <%= render partial: "shared/booking_card", locals: {bookings: @pending} %>
-  <% end %>
-
-  <!-- Display the confirmed bookings -->
-  <% if @confirmed.size.positive? %>
-    <h3>Confirmed booking<%= "s" if @confirmed.size > 1 %>:</h3>
-    <%= render partial: "shared/booking_card", locals: {bookings: @confirmed} %>
-  <% end %>
-
-  <!-- Display the rejected bookings -->
-  <% if @rejected.size.positive? %>
-    <h3>Rejected booking<%= "s" if @rejected.size > 1 %>:</h3>
-    <%= render partial: "shared/booking_card", locals: {bookings: @rejected} %>
-  <% end %>
+      <!-- Display the rejected bookings -->
+      <div class="message">
+      <% if @rejected.size.positive? %>
+      <div class="col-xs-10 col-sm-18">
+        <h5  class="rejected_request">Rejected booking<%= "s" if @rejected.size > 1 %>:</h5>
+        <%= render partial: "shared/booking_card", locals: {bookings: @rejected} %>
+      </div>
+      <% end %>
+    </div>
 
 </div>
 
