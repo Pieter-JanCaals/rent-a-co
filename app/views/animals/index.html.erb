@@ -42,7 +42,16 @@
                   </div>
                 </div>
                 <div class="animal-card-actions">
-                  <%= link_to 'Book Now', animal_path(animal[:id]), class: 'add-btn'%>
+                  <% if animal.user == current_user %>
+                    <%= link_to edit_animal_path(animal) do %>
+                      <i class="fas fa-pencil-alt"></i>
+                    <% end %>
+                    <%= link_to animal_path(animal), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to 'Book Now', animal_path(animal[:id]), class: 'add-btn'%>
+                  <% end %>
                 </div>
                </div>
              </div>
