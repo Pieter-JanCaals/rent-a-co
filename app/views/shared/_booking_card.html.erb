@@ -9,8 +9,8 @@
           <p><span>End Date: <%= booking.end_date.strftime("%A, %b %d") %></span></p>
     </div>
         <div class="message-body">
-          <p><strong>I am not sure yet!</strong></p>
-          <p>Message: <%= booking.content %></p>
+          <p><strong>Message: </strong></p>
+          <p><%= booking.content %></p>
         </div>
         <div class="message-status">
           <p>Status: <% if booking.confirmed %>
@@ -20,7 +20,7 @@
               <% else %>
                 Pending
               <% end %>
-            </p>
+          </p>
           <p class="price"><%= booking.animal.price %>$</p>
         </div>
         <div class="message-actions">
