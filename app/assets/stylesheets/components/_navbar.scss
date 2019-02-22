@@ -8,12 +8,13 @@ $accent:#ff5959;
  color: #ff5959;
 }*/
 
+
 .navbar-lewagon {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: $highlight;
-  padding: 16px 24px;
+  padding: 10px 24px;
   position:fixed;
   top: 0 ;
   width: 100%;
@@ -31,10 +32,10 @@ $accent:#ff5959;
 
 .navbar-lewagon .navbar-lewagon-actions .navbar-lewagon-link {
   margin-left: 24px;
-  color: white;
+  color: $accent;
 }
 .navbar-lewagon .navbar-lewagon-actions .navbar-lewagon-link:hover {
-  color: txt;
+  color: $main_txt;
   text-decoration: none;
 }
 

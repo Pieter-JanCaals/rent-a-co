@@ -1,0 +1,11 @@
+const scrollIndex = () => {
+  $(document).ready(function () {
+    if (document.getElementById('page_header').innerText == "All your animals") {
+      $('html, body').animate({
+          scrollTop: $('#page_header').offset().top
+      }, 'slow');
+    }
+  });
+}
+
+export { scrollIndex };
