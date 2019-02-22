@@ -1,9 +1,13 @@
 const scrollIndex = () => {
+
   $(document).ready(function () {
-    if (document.getElementById('page_header').innerText == "All your animals") {
-      $('html, body').animate({
-          scrollTop: $('#page_header').offset().top
-      }, 'slow');
+    const header = document.getElementById('page_header');
+    if (header != null) {
+      if (header.innerText == "All your animals") {
+        $('html, body').animate({
+            scrollTop: $('#page_header').offset().top
+        }, 'slow');
+      }
     }
   });
 }
