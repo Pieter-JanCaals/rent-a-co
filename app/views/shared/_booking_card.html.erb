@@ -1,13 +1,13 @@
-<div class="wrapper">
-  <div class="col-xs-10 col-sm-18">
-    <div class="message">
-      <% bookings.each do |booking| %>
+<div>
+    <!-- <div class="message"> -->
+  <% bookings.each do |booking| %>
+    <div style="display: flex;">
         <%= cl_image_tag(booking.animal.photo, :alt => 'animal photo', class: "avatar-large")%>
         <div class="message-name">
-          <h3><strong>Animal: <%= booking.animal.name %></strong></h3>
+          <p><strong>Animal: <%= booking.animal.name %></strong></p>
           <p><span>Start Date: <%= booking.start_date.strftime("%A, %b %d") %></span></p>
           <p><span>End Date: <%= booking.end_date.strftime("%A, %b %d") %></span></p>
-    </div>
+        </div>
         <div class="message-body">
           <p><strong>Message: </strong></p>
           <p><%= booking.content %></p>
@@ -24,31 +24,31 @@
           <p class="price"><%= booking.animal.price %>$</p>
         </div>
         <div class="message-actions">
-         <% if booking.confirmed.nil? %>
-          <% if booking.animal.user == current_user %>
-           <%= link_to "Approve", booking_respond_path(booking, confirmed: true),
-                method: :post,
-                data: { confirm: "Are you sure you want to approved this booking?" } %>
-          <%= link_to "Decline", booking_respond_path(booking, confirmed: false),
-                method: :post,
-                data: { confirm: "Are you sure you want to decline this booking?" } %>
-          <% else %>
-            <%= link_to animal_path(booking.animal) do %>
-              <i class="fas fa-pencil-alt"></i>
-            <% end %>
-            <%= link_to booking_path(booking),
-                method: :delete,
-                data: { confirm: "Are you sure you want to cancel this booking?" }  do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
+          <% if booking.confirmed.nil? %>
+            <% if booking.animal.user == current_user %>
+              <%= link_to "Approve", booking_respond_path(booking, confirmed: true),
+                  method: :post,
+                  data: { confirm: "Are you sure you want to approved this booking?" } %>
+              <%= link_to "Decline", booking_respond_path(booking, confirmed: false),
+                  method: :post,
+                  data: { confirm: "Are you sure you want to decline this booking?" } %>
+            <% else %>
+              <%= link_to animal_path(booking.animal) do %>
+                <i class="fas fa-pencil-alt"></i>
+              <% end %>
+              <%= link_to booking_path(booking),
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to cancel this booking?" }  do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
           <% end %>
-          </div>
-          <br>
         </div>
-      </div>
-    <% end %>
-  </div>
+          <!-- <br> -->
+    </div>
+  <% end %>
+    <!-- </div> -->
+</div>
 
 
 
