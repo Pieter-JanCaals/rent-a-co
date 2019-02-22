@@ -22,7 +22,7 @@
           <% end %>
           <p class="price"><%= booking.animal.price %>$</p>
         </div>
-
+        <div class="message-actions">
          <% if booking.confirmed.nil? %>
           <% if booking.animal.user == current_user %>
            <%= link_to "Approve", booking_respond_path(booking, confirmed: true),
@@ -32,12 +32,17 @@
                 method: :post,
                 data: { confirm: "Are you sure you want to decline this booking?" } %>
           <% else %>
-            <%= link_to "Edit", animal_path(booking.animal) %>
-            <%= link_to "Cancel this booking", booking_path(booking),
+            <%= link_to animal_path(booking.animal) do %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to booking_path(booking),
                 method: :delete,
-                data: { confirm: "Are you sure you want to cancel this booking?" } %>
+                data: { confirm: "Are you sure you want to cancel this booking?" }  do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
             <% end %>
           <% end %>
+          </div>
           <br>
         </div>
       </div>
