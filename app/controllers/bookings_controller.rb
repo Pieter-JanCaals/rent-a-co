@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      render animal_path(@animal)
+      render "animals/show"
     end
   end
 

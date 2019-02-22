@@ -1,0 +1,6 @@
+<%= simple_form_for [@animal, @booking], input_html: { id: :bookingForm }, remote: true do |f| %>
+  <%= f.input :start_date, as: :string %>
+  <%= f.input :end_date, as: :string %>
+  <%= f.input :content, label: "Message", input_html: { id: :contentInput } %>
+  <%= f.button :button, "Book", class: "add-btn", id: :submitBtn, data: {target: "#exampleModalCenter", toggle: "modal", dismiss: "modal" } %>
+<% end %>
